@@ -9,6 +9,15 @@ public class Usuari {
 	
 	
 	
+	public Usuari(String nom, String cognoms, String correu, String contrasenya) {
+		super();
+		this.nom = nom;
+		this.cognoms = cognoms;
+		this.correu = correu;
+		this.contrasenya = contrasenya;
+	}
+	
+	
 	public String getNom() {
 		return nom;
 	}
