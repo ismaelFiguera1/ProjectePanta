@@ -1,3 +1,5 @@
+<%@page import="almata.Usuari"%>
+<%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,5 +23,6 @@
 		<h3>Telefon Empresa:</h3>
 		<span>973 765 364</span>
 	</section>
+
 </body>
 </html>

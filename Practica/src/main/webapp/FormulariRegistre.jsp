@@ -1,8 +1,10 @@
+<%@page import="java.util.Set"%>
 <%@page import="java.util.LinkedHashSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ page import="almata.Usuari" %> 
+<%@ page import="java.util.Set, java.util.LinkedHashSet" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,19 +40,18 @@
 		<input type="submit">
 	</form>
 	
-	<%
-	Set<String> usuaris = new LinkedHashSet<>();
-	usuaris.add("Juan");
-	%>
-	
-	<li><% out.print(usuaris); %></li>
+
 	
 	<%if(nom!=null){
+		Set<Usuari> usuaris = (Set<Usuari>)application.getAttribute("llistaUsuaris");
 		Usuari usuari = new Usuari(nom, cognom, mail, contrasenya);
 		application.setAttribute("usuari", usuari);
+		usuaris.add(usuari);
 	}
 	
 	%>
+
+	
 	
 	
 	
@@ -59,12 +60,4 @@
 </body>
 </html>
 
-	<%
-// per fixar-la dins un JSP
-application.setAttribute("variable", new Integer(55));
-// Per llegir-la dins el mateix o un altre JSP
-Integer valor = (Integer)application
-.getAttribute("variable");
 
-out.print(valor);
-%>

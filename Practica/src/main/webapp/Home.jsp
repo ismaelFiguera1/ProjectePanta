@@ -1,3 +1,6 @@
+<%@page import="java.util.Set"%>
+<%@page import="almata.Usuari"%>
+<%@page import="java.util.LinkedHashSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
