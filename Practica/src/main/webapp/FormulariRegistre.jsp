@@ -12,6 +12,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		Usuari usuari1 = (Usuari) session.getAttribute("usuariLogejat");
+		
+		if(usuari1 != null){
+			response.sendRedirect("Home.jsp");
+		}
+	%>
+
+
 	<form method="post">
 		<label>Nom:</label>
 		<input type="text" name="nom">
@@ -43,7 +52,7 @@
 
 	
 	<%if(nom!=null){
-		Set<Usuari> usuaris = (Set<Usuari>)application.getAttribute("llistaUsuaris");
+		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
 		Usuari usuari = new Usuari(nom, cognom, mail, contrasenya);
 		application.setAttribute("usuari", usuari);
 		usuaris.add(usuari);

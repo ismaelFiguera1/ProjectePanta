@@ -15,16 +15,22 @@
 	%>
 	<p>
 	<%
-	Set<Usuari> usuaris = (Set<Usuari>)application.getAttribute("llistaUsuaris");
+	Set usuaris = (Set) application.getAttribute("llistaUsuaris");
 	
-	for(Usuari usuari : usuaris){
+	//	Aqui rebo un set
+	
+	for(Object obj : usuaris){
+		
+		//	Aqui agafo l'objecte del set i el converteixo a usuari
+		
+		Usuari usuari = (Usuari) obj;
 		%>
 		<section style="border: 1">
 			<%
-			out.print(usuari.getNom());
-			out.print(usuari.getCognoms());
-			out.print(usuari.getCorreu());
-			out.print(usuari.getContrasenya());
+			out.print(usuari.getNom() + "\n");
+			out.print(usuari.getCognoms() + "\n");
+			out.print(usuari.getCorreu() + "\n");
+			out.print(usuari.getContrasenya() + "\n");
 			%>
 		</section>
 		<%

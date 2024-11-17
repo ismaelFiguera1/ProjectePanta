@@ -13,7 +13,7 @@
 
 <h1>Inici Aplicacio Administradors</h1>
 		<%
-		Set<Usuari> usuaris = new LinkedHashSet<>();
+		Set usuaris = new LinkedHashSet();
 		application.setAttribute("llistaUsuaris", usuaris);
 		%>
 </body>
