@@ -15,6 +15,8 @@
 		<%
 		Set usuaris = new LinkedHashSet();
 		application.setAttribute("llistaUsuaris", usuaris);
+		Set usuarisLogejats = new LinkedHashSet();
+		session.setAttribute("llistaUsuarisLogejats", usuarisLogejats);
 		%>
 </body>
 </html>

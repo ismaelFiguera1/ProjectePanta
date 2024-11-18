@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.baix {
+		display: flex;
+		gap: 20px;
+	}
+</style>
 </head>
 <body>
 	<h1>Login</h1>
@@ -21,7 +27,11 @@
 			<label>Contrasenya</label>
 			<input type="password" name="contrasenya">
 		</article>
-		<article>
+		<article class="baix">
+			<article>
+				<input type="checkbox">			
+				<label>Recordar-me</label>
+			</article>
 			<button type="submit">
 				Entrar
 			</button>
@@ -35,6 +45,7 @@
 	
 	if(correu!=null){
 		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
+		Set usuarisLogejats = (Set) session.getAttribute("llistaUsuarisLogejats");
 		
 		
 		for(Object obj : usuaris){
@@ -43,7 +54,7 @@
 			String password = usuari.getContrasenya();
 			
 			if(mail.equals(correu) && password.equals(contrasenya)){
-				session.setAttribute("usuariLogejat", usuari);
+				usuarisLogejats.add(usuari);
 				response.sendRedirect("Home.jsp");
 			}
 		}
