@@ -12,9 +12,12 @@
 		display: flex;
 		gap: 20px;
 	}
+	
+
 </style>
 </head>
 <body>
+<jsp:include page="ASSETS/Capçalera.jsp" />
 	<h1>Login</h1>
 	
 	<section>
@@ -38,6 +41,7 @@
 		</article>
 	</form>
 	</section>
+	<jsp:include page="ASSETS/Footer.jsp" />
 	<%
 	String correu = request.getParameter("correu");
 	String contrasenya = request.getParameter("contrasenya");

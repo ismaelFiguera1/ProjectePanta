@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="ASSETS/Capçalera.jsp" />
 	<h1>ARMASA</h1>
 	
 	<section>
@@ -24,5 +25,6 @@
 		<span>973 765 364</span>
 	</section>
 
+	<jsp:include page="ASSETS/Footer.jsp" />
 </body>
 </html>

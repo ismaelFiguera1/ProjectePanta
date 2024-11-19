@@ -36,5 +36,6 @@
 			<a href="PaginaDades.jsp">Pagina Dades</a>
 		</article>
 	</section>
+	<jsp:include page="ASSETS/Footer.jsp" />
 </body>
 </html>

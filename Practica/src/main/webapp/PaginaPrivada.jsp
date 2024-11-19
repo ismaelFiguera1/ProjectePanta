@@ -1,3 +1,4 @@
+<%@page import="java.util.Set"%>
 <%@page import="almata.Usuari"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,17 +13,18 @@
 	//	Aqui comprovo que l'usuari estigui a la sessio
 	
 	//	Faig un cast perque el getAtributte sempre retorna un Object
-	Usuari usuari =	(Usuari) session.getAttribute("usuariLogejat");
+		Set llistaUsuaris = (Set) session.getAttribute("llistaUsuarisLogejats");
 	
-	//	Aqui dic si l'usuari no existeix em retorni a la pestanya login
-	if(usuari == null){
-		response.sendRedirect("Login.jsp");
-	}
+	//	Aqui dic si la llista es buida em retorni al home
+
+		if(llistaUsuaris == null){
+			response.sendRedirect("Home.jsp");
+		}
 	
 	%>
 
 
-
+<jsp:include page="ASSETS/Capçalera.jsp" />
 	<h1>Telefon Atencio Preferent a usuaris loggejats</h1>
 	<section>
 		<h3>Telefon:</h3>
@@ -33,6 +35,7 @@
 		Tancar sessio
 	</button>
 	</form>
+	<jsp:include page="ASSETS/Footer.jsp" />
 	
 	<%
 	String sortir = "logout";
