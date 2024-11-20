@@ -9,18 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Llista Usuaris Logejats</h1>
+	<h1>Usuari logejat en aquesta sessio</h1>
 	<%
 	
 	// Tinc que fer el cast a Usuari, perque el setAtribute em guarda un objecte i aqui vull rebre l'usuari
 	
-Set usuaris = (Set) application.getAttribute("llistaUsuarisLogejats");
+	Usuari user = (Usuari) session.getAttribute("usuariLogejat");
 	
-	for(Object obj : usuaris){
-		Usuari user = (Usuari) obj;
+
 		out.print(user.toString());
-		 %> <br><br><br><br><br><%
-	}
 	%>
+
 </body>
 </html>

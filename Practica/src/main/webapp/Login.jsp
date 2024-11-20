@@ -13,6 +13,10 @@
 		gap: 20px;
 	}
 	
+	.credencials-incorrectes {
+		padding: 2%;
+		background-color: red;
+	}
 
 </style>
 </head>
@@ -41,31 +45,43 @@
 		</article>
 	</form>
 	</section>
-	<jsp:include page="ASSETS/Footer.jsp" />
+	
 	<%
 	String correu = request.getParameter("correu");
 	String contrasenya = request.getParameter("contrasenya");
+	String text="";
+	
+
 	
 	
 	if(correu!=null){
 		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
-		Set usuarisLogejats = (Set) session.getAttribute("llistaUsuarisLogejats");
+		Set usuarisLogejats = (Set) application.getAttribute("llistaUsuarisLogejats");
 		
 		
-		for(Object obj : usuaris){
+		boolean trobat = false;
+		
+		for (Object obj: usuaris){
 			Usuari usuari = (Usuari) obj;
 			String mail = usuari.getCorreu();
 			String password = usuari.getContrasenya();
-			
 			if(mail.equals(correu) && password.equals(contrasenya)){
 				usuarisLogejats.add(usuari);
+				session.setAttribute("usuariLogejat", usuari);
 				response.sendRedirect("Home.jsp");
 			}
+			
+		}
+		
+		if(trobat==false){
+			text = "Credencials incorrectes"; 
+			%><p class="credencials-incorrectes"><%=text %></p><%
 		}
 	}
-
-		
-		
 	%>
+	
+	
+	
+	<jsp:include page="ASSETS/Footer.jsp" />
 </body>
 </html>

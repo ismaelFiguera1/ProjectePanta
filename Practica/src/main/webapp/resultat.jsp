@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Usuaris Registrats a l'aplicacio</h1>
 	<%
 	Usuari ISMA = (Usuari)application
 			.getAttribute("usuari");
@@ -27,12 +28,10 @@
 		%>
 		<section style="border: 1">
 			<%
-			out.print(usuari.getNom() + "\n");
-			out.print(usuari.getCognoms() + "\n");
-			out.print(usuari.getCorreu() + "\n");
-			out.print(usuari.getContrasenya() + "\n");
+			out.print(usuari.toString());
 			%>
 		</section>
+		<br><br><br><br><br>
 		<%
 	}
 	%>

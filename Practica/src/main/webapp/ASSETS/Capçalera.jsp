@@ -1,3 +1,4 @@
+<%@page import="almata.Usuari"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -28,7 +29,21 @@
     <header>
     	<section class="capçalera">
     		<div><a href="Home.jsp">ARMASA</a></div>
-    		<div></div>
+    		
+    		<%
+    			Usuari user = (Usuari) session.getAttribute("usuariLogejat");
+    			if(user == null){
+    				%><div>
+    				
+    				<a href="Login.jsp">Login</a>
+    				<a href="FormulariRegistre.jsp">Registrar-se</a>
+    				
+    				</div><%
+    			} else {
+    				%><div>Adeu</div><%
+    			}
+    		%>
+    		
     	</section>
     
     </header>

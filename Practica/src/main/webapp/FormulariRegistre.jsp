@@ -14,9 +14,9 @@
 <body>
 
 	<%
-		Set llistaUsuaris = (Set) session.getAttribute("llistaUsuarisLogejats");
+		Usuari user = (Usuari) session.getAttribute("usuariLogejat");
 		
-		if(llistaUsuaris != null){
+		if(user != null){
 			response.sendRedirect("Home.jsp");
 		}
 	%>

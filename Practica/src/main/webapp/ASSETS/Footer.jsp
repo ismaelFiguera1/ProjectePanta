@@ -3,10 +3,10 @@
     
     <style>
     	footer {
-			border: 1px solid #ebffec;
+			border: 1px solid #rgb(181, 242, 184);
 			padding: 3%;
 			margin-top: 3%;
-			background-color: #ebffec;
+			background-color: rgb(181, 242, 184);
 		}
 		
 		.footer {

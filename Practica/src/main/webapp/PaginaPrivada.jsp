@@ -13,11 +13,11 @@
 	//	Aqui comprovo que l'usuari estigui a la sessio
 	
 	//	Faig un cast perque el getAtributte sempre retorna un Object
-		Set llistaUsuaris = (Set) session.getAttribute("llistaUsuarisLogejats");
+		Usuari user = (Usuari) session.getAttribute("usuariLogejat");
 	
 	//	Aqui dic si la llista es buida em retorni al home
 
-		if(llistaUsuaris == null){
+		if(user == null){
 			response.sendRedirect("Home.jsp");
 		}
 	
@@ -41,7 +41,13 @@
 	String sortir = "logout";
 	String tancar = request.getParameter("logout");
 		if(tancar!=null && tancar.equals(sortir)){
-			session.invalidate();
+			
+			Set usuarisLogejats = (Set) application.getAttribute("llistaUsuarisLogejats");
+			
+			usuarisLogejats.remove(user);
+			session.removeAttribute("usuariLogejat");
+			
+			session.invalidate();	//	Si tinc altres variables a la sessio s'esborren, el invalidate es opcional
 			response.sendRedirect("Home.jsp");
 		}
 	%>
