@@ -41,10 +41,6 @@
 	String sortir = "logout";
 	String tancar = request.getParameter("logout");
 		if(tancar!=null && tancar.equals(sortir)){
-			
-			Set usuarisLogejats = (Set) application.getAttribute("llistaUsuarisLogejats");
-			
-			usuarisLogejats.remove(user);
 			session.removeAttribute("usuariLogejat");
 			
 			session.invalidate();	//	Si tinc altres variables a la sessio s'esborren, el invalidate es opcional

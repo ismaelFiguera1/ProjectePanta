@@ -12,11 +12,13 @@
 <body>
 
 <h1>Inici Aplicacio Administradors</h1>
+
+
+
+	<p>Iniciant base de dades...</p>
 		<%
 		Set usuaris = new LinkedHashSet();
 		application.setAttribute("llistaUsuaris", usuaris);
-		Set usuarisLogejats = new LinkedHashSet();
-		application.setAttribute("llistaUsuarisLogejats", usuarisLogejats);
 		%>
 </body>
 </html>

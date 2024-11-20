@@ -56,7 +56,23 @@
 	
 	if(correu!=null){
 		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
-		Set usuarisLogejats = (Set) application.getAttribute("llistaUsuarisLogejats");
+		
+
+		
+		Cookie cookie = new Cookie("email", request.getParameter("correu"));
+		cookie.setMaxAge(60*60*24);
+		response.addCookie(cookie);
+		
+		Cookie cookie1 = new Cookie("contrasenya", request.getParameter("contrasenya"));
+		cookie.setMaxAge(60*60*24);
+		response.addCookie(cookie1);
+		
+		
+
+		
+		
+		out.print("La cooki sa trobat, nom =  " + cookie + ", valor = "+ cookie.getValue() +".");
+		
 		
 		
 		boolean trobat = false;
@@ -66,9 +82,7 @@
 			String mail = usuari.getCorreu();
 			String password = usuari.getContrasenya();
 			if(mail.equals(correu) && password.equals(contrasenya)){
-				usuarisLogejats.add(usuari);
 				session.setAttribute("usuariLogejat", usuari);
-				response.sendRedirect("Home.jsp");
 			}
 			
 		}

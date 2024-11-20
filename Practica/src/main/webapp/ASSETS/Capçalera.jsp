@@ -40,7 +40,13 @@
     				
     				</div><%
     			} else {
-    				%><div>Adeu</div><%
+    				
+    				%><div>
+    				 	<ul>
+    				 		<li><%out.print(user.getNom());%></li>
+    				 		<li><%out.print(user.getCognoms());%></li>
+    				 	</ul>
+    				</div><%
     			}
     		%>
     		
