@@ -16,6 +16,11 @@
 		background-color: rgba(255, 0, 0, 0.4);
 		border: 1px solid red;
 	}
+	
+		.credencials-incorrectes {
+		padding: 2%;
+		background-color: red;
+	}
 </style>
 </head>
 <body>
@@ -59,6 +64,7 @@
 	
 	
 	if(nom!=null){
+		
 		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
 		if (usuaris == null){
 			
@@ -67,6 +73,16 @@
 			<%
 			return;
 		}
+		
+		if(request.getParameter("nom").equals("") || request.getParameter("cognom").equals("") ||
+				 request.getParameter("correu").equals("") || 
+				 request.getParameter("password").equals("")){
+			%><p class="credencials-incorrectes">No es pot ficar credencials buides</p>
+			<jsp:include page="ASSETS/Footer.jsp" /><%
+			return;
+		}
+		
+
 		Usuari usuari = new Usuari(nom, cognom, mail, contrasenya);
 		application.setAttribute("usuari", usuari);
 		usuaris.add(usuari);

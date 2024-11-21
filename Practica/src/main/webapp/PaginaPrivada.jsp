@@ -18,19 +18,21 @@
 	Cookie[] cookiesNavegador = null; 
 	cookiesNavegador=request.getCookies();
 	
-	if(!(cookiesNavegador.equals(null))){
-		for(Cookie a:cookiesNavegador){
-			if(!a.getName().equals("email") && user == null){
-//				Aqui dic si la llista es buida em retorni al home i no hi ha cookie
-				response.sendRedirect("Home.jsp");
-return;
-			}
+	Cookie a=null;
+	
+	for(Cookie b:cookiesNavegador){
+		if(b.getName().equals("email")){
+			a=b;
 		}
-		
-		
 	}
 	
 	
+	
+	if(user==null && a==null){
+		response.sendRedirect("Home.jsp");
+	}
+	
+	if(user==null)
 
 
 	

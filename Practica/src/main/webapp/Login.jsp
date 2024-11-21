@@ -15,27 +15,31 @@
 	
 	.credencials-incorrectes {
 		padding: 2%;
-		background-color: red;
+		background-color: rgba(255, 0, 0, 0.4);
+		border: 1px solid red;
 	}
 
 </style>
 </head>
 <body>
 <%
-
+	Usuari user = (Usuari) session.getAttribute("usuariLogejat");
 
 	Cookie[] cookiesNavegador = null; 
 	cookiesNavegador=request.getCookies();
 	
-	if(!(cookiesNavegador.equals(null))){
-		for(Cookie a:cookiesNavegador){
-			if(a.getName().equals("email")){
-				response.sendRedirect("PaginaPrivada.jsp");
-			}
+	Cookie a=null;
+	
+	for(Cookie b:cookiesNavegador){
+		if(b.getName().equals("email")){
+			a=b;
 		}
-		
-		
 	}
+/*	
+	if(a!=null){
+		response.sendRedirect("PaginaPrivada.jsp");
+	}
+*/
 %>
 <jsp:include page="ASSETS/Capçalera.jsp" />
 	<h1>Login</h1>
@@ -63,6 +67,15 @@
 	</section>
 	
 	<%
+	if(request.getParameter("correu")!=null){
+		
+		if(request.getParameter("correu").equals("") || 
+				request.getParameter("contrasenya").equals("")){
+			%><p class="credencials-incorrectes">No es pot ficar credencials buides</p>
+			<jsp:include page="ASSETS/Footer.jsp" /><%
+			return;
+		}
+		
 	String correu = request.getParameter("correu");
 	String contrasenya = request.getParameter("contrasenya");
 	String text = "";
@@ -71,7 +84,9 @@
 
 	
 	
-	if(correu!=null){
+
+		
+		
 		
 		
 		if(!(seleccionat==null)){

@@ -37,5 +37,26 @@
 		</article>
 	</section>
 	<jsp:include page="ASSETS/Footer.jsp" />
+	
+	
+	<%
+		Cookie[] cuky=null;
+	cuky = request.getCookies();
+	
+	if(cuky!=null){
+		for(Cookie a:cuky){
+			if(a.getName().equals("email")){
+				Set llistaUser = (Set) application.getAttribute("llistaUsuaris");
+				for(Object obj:llistaUser){
+					Usuari usuari = (Usuari) obj;
+					if(usuari.getCorreu().equals(a.getValue())){
+						session.setAttribute("usuariLogejat", usuari);
+						return;
+					}
+				}
+			}
+		}
+	}
+	%>
 </body>
 </html>
