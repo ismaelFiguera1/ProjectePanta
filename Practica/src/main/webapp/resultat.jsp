@@ -11,14 +11,14 @@
 <body>
 <h1>Usuaris Registrats a l'aplicacio</h1>
 	<%
-	Usuari ISMA = (Usuari)application
-			.getAttribute("usuari");
-	%>
-	<p>
-	<%
 	Set usuaris = (Set) application.getAttribute("llistaUsuaris");
 	
 	//	Aqui rebo un set
+	
+	if (usuaris == null){
+		out.print("No s'ha inicialitzat la base de dades...");
+		return;
+	}
 	
 	for(Object obj : usuaris){
 		

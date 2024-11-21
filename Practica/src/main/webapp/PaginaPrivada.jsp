@@ -15,11 +15,24 @@
 	//	Faig un cast perque el getAtributte sempre retorna un Object
 		Usuari user = (Usuari) session.getAttribute("usuariLogejat");
 	
-	//	Aqui dic si la llista es buida em retorni al home
-
-		if(user == null){
-			response.sendRedirect("Home.jsp");
+	Cookie[] cookiesNavegador = null; 
+	cookiesNavegador=request.getCookies();
+	
+	if(!(cookiesNavegador.equals(null))){
+		for(Cookie a:cookiesNavegador){
+			if(!a.getName().equals("email") && user == null){
+//				Aqui dic si la llista es buida em retorni al home i no hi ha cookie
+				response.sendRedirect("Home.jsp");
+return;
+			}
 		}
+		
+		
+	}
+	
+	
+
+
 	
 	%>
 

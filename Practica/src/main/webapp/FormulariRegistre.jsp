@@ -10,6 +10,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.error {
+		padding: 2%;
+		background-color: rgba(255, 0, 0, 0.4);
+		border: 1px solid red;
+	}
+</style>
 </head>
 <body>
 
@@ -38,7 +45,7 @@
 		<input type="submit">
 	</form>
 	
-	<jsp:include page="ASSETS/Footer.jsp" />
+
 	
 	<%
 	String nom = request.getParameter("nom");
@@ -46,11 +53,20 @@
 	String mail = request.getParameter("correu");
 	String contrasenya = request.getParameter("password");
 	
+	String text = "Error, No has inicialitzat les base de dades...";
+	
 	
 	
 	
 	if(nom!=null){
 		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
+		if (usuaris == null){
+			
+			%><p class="error"><%=text %><p>
+			<jsp:include page="ASSETS/Footer.jsp" />
+			<%
+			return;
+		}
 		Usuari usuari = new Usuari(nom, cognom, mail, contrasenya);
 		application.setAttribute("usuari", usuari);
 		usuaris.add(usuari);
@@ -61,7 +77,7 @@
 	
 	
 	
-	
+		<jsp:include page="ASSETS/Footer.jsp" />
 
 
 </body>

@@ -10,25 +10,51 @@
 </head>
 <body>
 	<h1>Cookies</h1>
+	
+	<form method="post">
+		<button type="submit" value="esborrar" name="button">Esborrar Cookies</button>
+	</form>
 
 
 	
 	<%
 	Cookie[] cookies = null;
 	cookies = request.getCookies();
-	if (cookies != null) {
-	out.println("Trobades galetes amb valors:");
 	
-	%> <br><br><br><br> <%
+	String text = "esborrar";
 	
-	for (int i = 0; i < cookies.length ; i++) {
-		Cookie cuki = cookies[i];
-		out.print("Nom: "+ cuki.getName() +".       Valor: "+ cuki.getValue());
-		%> <br><br> <%
+	String boto = request.getParameter("button");
+	
+	if(cookies == null){
+		out.print("No hi ha cookies");
+		return;
 	}
 	
+	if(boto != null && boto.equals(text)){
+		for (Cookie a:cookies){
+			if(!a.getName().equals("JSESSIONID")){
+				a.setMaxAge(0);
+				response.addCookie(a);
+			}
+		}
+	} else {
+		if (cookies != null) {
+			out.println("Trobades galetes amb valors:");
+			
+			%> <br><br><br><br> <%
+			
+			for (int i = 0; i < cookies.length ; i++) {
+				Cookie cuki = cookies[i];
+				out.print("Nom: "+ cuki.getName() +".       Valor: "+ cuki.getValue());
+				%> <br><br> <%
+			}
+		
+		}
 	}
+	
+	
 	%>
+
 	
 
 

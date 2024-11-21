@@ -21,6 +21,22 @@
 </style>
 </head>
 <body>
+<%
+
+
+	Cookie[] cookiesNavegador = null; 
+	cookiesNavegador=request.getCookies();
+	
+	if(!(cookiesNavegador.equals(null))){
+		for(Cookie a:cookiesNavegador){
+			if(a.getName().equals("email")){
+				response.sendRedirect("PaginaPrivada.jsp");
+			}
+		}
+		
+		
+	}
+%>
 <jsp:include page="ASSETS/Capçalera.jsp" />
 	<h1>Login</h1>
 	
@@ -36,7 +52,7 @@
 		</article>
 		<article class="baix">
 			<article>
-				<input type="checkbox">			
+				<input type="checkbox"  name="check">			
 				<label>Recordar-me</label>
 			</article>
 			<button type="submit">
@@ -49,32 +65,33 @@
 	<%
 	String correu = request.getParameter("correu");
 	String contrasenya = request.getParameter("contrasenya");
-	String text="";
+	String text = "";
+	String	seleccionat = request.getParameter("check");
 	
 
 	
 	
 	if(correu!=null){
+		
+		
+		if(!(seleccionat==null)){
+			Cookie cookie = new Cookie("email", request.getParameter("correu"));
+			cookie.setMaxAge(60*60*24);
+			response.addCookie(cookie);
+			
+			Cookie cookie1 = new Cookie("contrasenya", request.getParameter("contrasenya"));
+			cookie.setMaxAge(60*60*24);
+			response.addCookie(cookie1);
+		}
+		
+		
+		
+		
+		
+		
 		Set usuaris = (Set) application.getAttribute("llistaUsuaris");
 		
-
-		
-		Cookie cookie = new Cookie("email", request.getParameter("correu"));
-		cookie.setMaxAge(60*60*24);
-		response.addCookie(cookie);
-		
-		Cookie cookie1 = new Cookie("contrasenya", request.getParameter("contrasenya"));
-		cookie.setMaxAge(60*60*24);
-		response.addCookie(cookie1);
-		
-		
-
-		
-		
-		out.print("La cooki sa trobat, nom =  " + cookie + ", valor = "+ cookie.getValue() +".");
-		
-		
-		
+	
 		boolean trobat = false;
 		
 		for (Object obj: usuaris){
@@ -83,6 +100,7 @@
 			String password = usuari.getContrasenya();
 			if(mail.equals(correu) && password.equals(contrasenya)){
 				session.setAttribute("usuariLogejat", usuari);
+				response.sendRedirect("Home.jsp");
 			}
 			
 		}
